@@ -29,6 +29,6 @@ Where applicable make sure that Working Directory under Advanced tab is set to `
 |------|-----------|---------------|
 |   1  | Tokenization: Transform file | | 
 |   2  | Command Line (Preview) | `dotnet ef dbcontext info` | 
-|   3  | Command Line (Preview) | `dotnet ef migrations script -o $(build.artifactstagingdirectory)\deploy\migrations.sql |
+|   3  | Command Line (Preview) | `dotnet ef migrations script -o $(build.artifactstagingdirectory)\deploy\migrations.sql` |
 
 # Release
