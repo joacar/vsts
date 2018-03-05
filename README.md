@@ -4,6 +4,9 @@ Visual Studio Team Services lessons and reminders
 # Build (Continuous Integration)
 Building continuously - what a dream! Ensure correctnes of code. But is it just code?
 
+## Execute EntityFramework Core migration
+TODO
+
 ## Generate SQL script with EntityFramework Core
 The procedure will be
 1. Check for existance of variable in `appsettings.json` and replace it with the database connection string
@@ -32,3 +35,16 @@ Where applicable make sure that Working Directory under Advanced tab is set to `
 |   3  | Command Line (Preview) | `dotnet ef migrations script -o $(build.artifactstagingdirectory)\deploy\migrations.sql` |
 
 # Release
+With everything nicely bundled up, we want to unzip the content and apply some scripting to get things updated on the server and our app reloaded.
+
+## Variable group
+Since we will need to interact with the database we will also need a safe place to store our variables. Create a variable group called `Database` and add four variables
+
+| Name | Value |
+|------|-------|
+| DatabaseServer | my-server.database.windows.net |
+| DatabaseName | my-database |
+| DatabasePassword | ******** |
+| DatabaseUser | my-user |
+
+## Pipeline (agent phases)
