@@ -48,3 +48,10 @@ Since we will need to interact with the database we will also need a safe place 
 | DatabaseUser | my-user |
 
 ## Pipeline (agent phases)
+| Step | Tool name | Configuration | Description |
+|------|-----------|---------------|-------------|
+|   1  | Bash (Preview) | echo $(UserPassword) | `sudo -S unzip -o WebApp.zip -d $(AppDirectory) >> /dev/null` | Unzip the artificat from Agent directory into any directory, e.g. `var/www/<my-app>/` on Ubuntu. The `>> /dev/null` redirects output to `null` pipe - that is it wont be written to std out and pollute console. |
+|   2  | Bash (Preview) | `sqlcmd -S $(DatabaseServer) -d $(DatabaseName) -U $(DatabaseUser) -P $(DatabasePassword) -i $script` | The `$script` should be the path of the sql scripted generated and deployed as artificat.
+
+**Note** Ensure that `sqlcmd` is in the path (`/usr/bin/path`) or ensure that the `sqlcmd` is added to the Agents path.
+
