@@ -34,6 +34,8 @@ Where applicable make sure that Working Directory under Advanced tab is set to `
 |   2  | Command Line (Preview) | `dotnet ef dbcontext info` | 
 |   3  | Command Line (Preview) | `dotnet ef migrations script -o $(build.artifactstagingdirectory)\deploy\migrations.sql` |
 
+If the project contains multiple context then [this](https://github.com/joacar/vsts/blob/master/tools/efcore-migrations.ps1) script can be used with `$(build.artifactstagingdirectory)\deploy` as input. The script files will be created with the name of the context.
+
 # Release
 With everything nicely bundled up, we want to unzip the content and apply some scripting to get things updated on the server and our app reloaded.
 
